@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de Dados</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Variável</th>
+                <th>Unidade</th>
+                <th>Localidade</th>
+                <th>Ano</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <script>
+                const dados = [
+                    {"id": "630", "variavel": "Número de empresas", "unidade": "Unidades", "resultados": [{"series": [{"localidade": {"nome": "Brasil"}, "serie": {"2007": "156151"}}]}]},
+                    {"id": "1000630", "variavel": "Número de empresas - percentual do total geral", "unidade": "Percentual", "resultados": [{"series": [{"localidade": {"nome": "Brasil"}, "serie": {"2007": "100.00"}}]}]},
+                    {"id": "810", "variavel": "Valor bruto da produção industrial", "unidade": "Mil Reais", "resultados": [{"series": [{"localidade": {"nome": "Brasil"}, "serie": {"2007": "1399952838"}}]}]},
+                    {"id": "1000810", "variavel": "Valor bruto da produção industrial - percentual do total geral", "unidade": "Percentual", "resultados": [{"series": [{"localidade": {"nome": "Brasil"}, "serie": {"2007": "100.00"}}]}]}
+                ];
+                
+                const tbody = document.querySelector("tbody");
+                dados.forEach(dado => {
+                    dado.resultados.forEach(resultado => {
+                        resultado.series.forEach(serie => {
+                            Object.entries(serie.serie).forEach(([ano, valor]) => {
+                                const row = document.createElement("tr");
+                                row.innerHTML = `
+                                    <td>${dado.id}</td>
+                                    <td>${dado.variavel}</td>
+                                    <td>${dado.unidade}</td>
+                                    <td>${serie.localidade.nome}</td>
+                                    <td>${ano}</td>
+                                    <td>${valor}</td>
+                                `;
+                                tbody.appendChild(row);
+                            });
+                        });
+                    });
+                });
+            </script>
+        </tbody>
+    </table>
+</body>
+</html>

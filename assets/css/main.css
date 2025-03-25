@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+:root {
+  --tooltip-label-color: var(--color-neutral-500) !important;
+  --tooltip-value-color: var(--color-neutral-100) !important;
+
+  --vis-axis-grid-color: var(--color-neutral-200) !important;
+  --vis-tooltip-background-color: var(--color-neutral-100) !important;
+  --vis-tooltip-border-color: var(--color-neutral-500) !important;
+  --vis-tooltip-text-color: var(--color-neutral-100) !important;
+  --vis-axis-tick-label-color: var(--color-neutral-500) !important;
+  --vis-legend-label-color: var(--color-neutral-500) !important;
+
+  --vis-axis-label-color: var(--color-neutral-500) !important;
+  --vis-legend-label-color: var(--color-neutral-500) !important;
+}
+
+.dark {
+  --tooltip-label-color: var(--color-neutral-500) !important;
+  --tooltip-value-color: var(--color-neutral-100) !important;
+
+  --vis-axis-grid-color: var(--color-neutral-800) !important;
+  --vis-tooltip-background-color: var(--color-neutral-900) !important;
+  --vis-tooltip-border-color: var(--color-neutral-500) !important;
+  --vis-tooltip-text-color: var(--color-neutral-100) !important;
+  --vis-axis-tick-label-color: var(--color-neutral-500) !important;
+  --vis-legend-label-color: var(--color-neutral-500) !important;
+
+  --vis-axis-label-color: var(--color-neutral-500) !important;
+  --vis-legend-label-color: var(--color-neutral-500) !important;
+} 
