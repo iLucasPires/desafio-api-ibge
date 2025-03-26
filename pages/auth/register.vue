@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { z } from "zod";
+
 definePageMeta({
   middleware: ["auth"],
 });
@@ -7,8 +9,15 @@ const userSession = useUserSession();
 const toast = useToast();
 const form = reactive({
   name: "",
-  email: "",
+  username: "",
   password: "",
+});
+
+
+const schema = z.object({
+  name: z.string().min(3, "O nome deve ter no mínimo 3 caracteres"),
+  username: z.string().email("Insira um email válido"),
+  password: z.string().min(6, "A senha deve ter no mínimo 6 caracteres"),
 });
 
 async function onSubmit() {
@@ -17,7 +26,7 @@ async function onSubmit() {
     method: "POST",
     body: {
       name: form.name,
-      username: form.email,
+      username: form.username,
       password: form.password,
     },
 
@@ -62,6 +71,7 @@ async function onSubmit() {
       <UForm
         class="flex flex-col gap-y-4 mt-4"
         :state="form"
+        :schema="schema"
         @submit="onSubmit"
       >
         <UFormField class="w-full" label="Name" name="name">
@@ -69,14 +79,14 @@ async function onSubmit() {
             v-model="form.name"
             class="w-full"
             type="text"
-            autocomplete="username"
+            autocomplete="name"
             placeholder="Enter your name"
           />
         </UFormField>
 
         <UFormField class="w-full" label="Email" name="email">
           <UInput
-            v-model="form.email"
+            v-model="form.username"
             class="w-full"
             type="email"
             autocomplete="username"

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { z } from "zod";
+
 definePageMeta({
   middleware: ["auth"],
 });
@@ -7,14 +9,19 @@ const userSession = useUserSession();
 const toast = useToast();
 
 const form = reactive({
-  email: "",
+  username: "",
   password: "",
+});
+
+const loginSchema = z.object({
+  username: z.string().email("Insira um email válido"),
+  password: z.string().min(6, "A senha deve ter no mínimo 6 caracteres"),
 });
 
 async function login() {
   const data = await $fetch("/api/auth/login", {
     method: "POST",
-    body: { username: form.email, password: form.password },
+    body: { username: form.username, password: form.password },
 
     onResponseError({ response }) {
       toast.add({
@@ -53,10 +60,10 @@ async function login() {
         <h1 class="text-3xl font-bold">Entrar</h1>
         <p class="text-neutral-600">Faça login para acessar o sistema</p>
       </div>
-      <div class="flex flex-col gap-y-4 mt-4">
+      <UForm class="flex flex-col gap-y-4 mt-4" :schema="loginSchema" :state="form" @submit="login" >
         <UFormField class="w-full" label="Email" name="email">
           <UInput
-            v-model="form.email"
+            v-model="form.username"
             class="w-full"
             type="email"
             autocomplete="username"
@@ -74,7 +81,7 @@ async function login() {
           />
         </UFormField>
 
-        <UButton label="Login" color="primary" block @click="login()" />
+        <UButton label="Login" color="primary" block type="submit" />
 
         <div class="flex justify-center">
           <p class="text-sm">
@@ -85,7 +92,7 @@ async function login() {
             >
           </p>
         </div>
-      </div>
+      </UForm>
     </UCard>
   </UContainer>
 </template>

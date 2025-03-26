@@ -94,12 +94,12 @@ const typesViewItems = [
 
     <UCard>
       <template #header>
-        <div class="flex w-full overflow-auto gap-2">
+        <div class="flex flex-col lg:flex-row w-full overflow-auto gap-2">
           <USelect
             v-model="aRef"
             :items="menuData || []"
             value-key="id"
-            class="w-20 lg:w-56 xl:w-64 flex-1"
+            class="w-full lg:w-56 xl:w-64 flex-1"
             placeholder="ano"
             icon="i-lucide-calendar"
             multiple
@@ -109,7 +109,7 @@ const typesViewItems = [
             v-model="vRef"
             :items="menuVariaveis || []"
             value-key="id"
-            class="w-20 lg:w-56 xl:w-64 flex-1"
+            class="w-full lg:w-56 xl:w-64 flex-1"
             placeholder="variaveis"
             icon="i-lucide-filter"
             multiple
@@ -119,7 +119,7 @@ const typesViewItems = [
             v-model="ccRef"
             :items="menuClassificacoes || []"
             value-key="id"
-            class="w-20 lg:w-56 xl:w-64 flex-1"
+            class="w-full lg:w-56 xl:w-64 flex-1"
             placeholder="classificacoes"
             icon="i-lucide-filter"
             multiple

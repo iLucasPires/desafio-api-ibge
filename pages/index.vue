@@ -7,7 +7,7 @@ definePageMeta({
 <template>
   <div class="flex flex-col h-screen">
     <LayoutHeader />
-    <div class="flex flex-1 p-10">
+    <div class="flex flex-1 ">
       <!-- <LayoutAsidebar /> -->
       <LayoutContent />
     </div>

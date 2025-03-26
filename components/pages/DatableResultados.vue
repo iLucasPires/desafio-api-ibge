@@ -3,10 +3,8 @@ import type { iDados } from "~/types";
 import type { Column } from "@tanstack/vue-table";
 import type { TableColumn } from "@nuxt/ui";
 
-
 import { h } from "vue";
 import { getPaginationRowModel } from "@tanstack/vue-table";
-
 
 const expanded = ref<Record<number, boolean>>({ 1: true });
 const resultados = defineModel<iDados[]>();
