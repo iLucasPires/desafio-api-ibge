@@ -1,3 +1,5 @@
+import { execSync } from 'child_process'
+
 export default defineNuxtConfig({
   compatibilityDate: "2025-03-25",
   devtools: { enabled: true },
@@ -13,6 +15,18 @@ export default defineNuxtConfig({
     experimental: {
       database: true,
       tasks: true,
+    },
+  },
+  hooks: {
+    'build:before': async () => {
+      try {
+        execSync('npx drizzle-kit migrate')
+        console.log('Prisma generate done.')
+      }
+      catch (error) {
+        console.error('Error in prisma generate:', error)
+        process.exit(1)
+      }
     },
   },
   runtimeConfig: {
