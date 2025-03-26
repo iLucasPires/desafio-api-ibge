@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  compatibilityDate: "2024-11-01",
+  compatibilityDate: "2025-03-25",
   devtools: { enabled: true },
   modules: [
     "@nuxt/ui",
@@ -9,7 +9,12 @@ export default defineNuxtConfig({
     "nuxt-auth-utils",
   ],
   css: ["@/assets/css/main.css"],
-
+  nitro: {
+    experimental: {
+      database: true,
+      tasks: true,
+    },
+  },
   runtimeConfig: {
     public: {
       apiPia: process.env.NUXT_API_PIA,
@@ -18,10 +23,6 @@ export default defineNuxtConfig({
       google: {
         clientId: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      },
-      github: {
-        clientId: process.env.GITHUB_CLIENT_ID,
-        clientSecret: process.env.GITHUB_CLIENT_SECRET,
       },
     },
   },

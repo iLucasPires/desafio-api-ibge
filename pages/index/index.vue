@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { iMetadados, iDados } from "@/types/agregados";
+import type { iMetadados, iDados } from "@/types";
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -51,8 +51,6 @@ watch([aRef, vRef, ccRef], () => {
     meta.data.value?.classificacoes[0].id || 0,
     ccRef.value.join(",")
   );
-
-  console.log(query.value);
 });
 
 const urlResultados = computed(

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
+import type { iDados } from "~/types";
+
 import { BarChart, LegendPosition } from "vue-ts-lib";
-import type { iDados } from "~/types/agregados";
 
 const resultados = defineModel<iDados[]>();
 

@@ -1,6 +1,20 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+@theme static {
+  --color-blue-50: #f0f5fe;
+  --color-blue-100: #dce8fd;
+  --color-blue-200: #c2d8fb;
+  --color-blue-300: #97bff9;
+  --color-blue-400: #669ef4;
+  --color-blue-500: #427aef;
+  --color-blue-600: #2d5be3;
+  --color-blue-700: #2448d1;
+  --color-blue-800: #243ba9;
+  --color-blue-900: #263c94;
+  --color-blue-950: #192352;
+}
+
 :root {
   --tooltip-label-color: var(--color-neutral-500) !important;
   --tooltip-value-color: var(--color-neutral-100) !important;
@@ -29,4 +43,4 @@
 
   --vis-axis-label-color: var(--color-neutral-500) !important;
   --vis-legend-label-color: var(--color-neutral-500) !important;
-} 
+}
